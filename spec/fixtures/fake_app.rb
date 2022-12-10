@@ -109,7 +109,7 @@ module Rack
 
         if path == '/cookies/subdomain' && method == 'GET'
           new_value = new_cookie_count(req)
-          return [200, { 'set-cookie' => "count=#{new_value}; domain=.example.org" }, [new_value]]
+          return [200, { 'set-cookie' => "count=#{new_value}; domain=example.org" }, [new_value]]
         end
 
         if path == '/cookies/set-uppercase' && method == 'GET'
@@ -118,7 +118,7 @@ module Rack
 
         if path == '/cookies/set-multiple' && method == 'GET'
           value = Rack.release >= '2.3' ? ["key1=value1", "key2=value2"] : "key1=value1\nkey2=value2"
-          
+
           return [200, { 'set-cookie' => value }, ['Set']]
         end
 
